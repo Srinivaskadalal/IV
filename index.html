@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Dashboard</title>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="xlsx.full.min.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    .dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 30px;
+    }
+    .chart {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    svg {
+      width: 100%;
+      height: 300px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Car Data Dashboard</h1>
+  <p>Interactive D3.js dashboard from local Excel file.</p>
+  <div class="dashboard">
+    <div class="chart" id="chart1"><h3>Distribution of MPG</h3><svg></svg></div>
+    <div class="chart" id="chart2"><h3>Average Horsepower by Cylinders</h3><svg></svg></div>
+    <div class="chart" id="chart3"><h3>Displacement vs Horsepower</h3><svg></svg></div>
+    <div class="chart" id="chart4"><h3>Acceleration by Model Year</h3><svg></svg></div>
+  </div>
+  <script src="code.js"></script>
+</body>
+</html>
