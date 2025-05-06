@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Car Dashboard</title>
+  <title>Car Dashboard Group 8</title>
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="xlsx.full.min.js"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.0/package/dist/xlsx.full.min.js"></script>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Times New Roman', Times, serif;
       margin: 20px;
     }
     .dashboard {
@@ -19,22 +19,75 @@
     .chart {
       border: 1px solid #ccc;
       padding: 10px;
+      position: relative;
+    }
+    .chart-controls {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    select {
+      padding: 5px;
+      font-family: inherit;
     }
     svg {
       width: 100%;
       height: 300px;
     }
+    .legend {
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
-  <h1>Car Data Dashboard</h1>
-  <p>Interactive D3.js dashboard from local Excel file.</p>
+  <h1>Car Data Dashboard Group 8</h1>
+  <p>Interactive D3.js dashboard for cars from different regions.</p>
   <div class="dashboard">
-    <div class="chart" id="chart1"><h3>Distribution of MPG</h3><svg></svg></div>
-    <div class="chart" id="chart2"><h3>Average Horsepower by Cylinders</h3><svg></svg></div>
-    <div class="chart" id="chart3"><h3>Displacement vs Horsepower</h3><svg></svg></div>
-    <div class="chart" id="chart4"><h3>Acceleration by Model Year</h3><svg></svg></div>
+    <div class="chart" id="chart1">
+      <div class="chart-controls">
+        <h3>Distribution of MPG for cars in different region</h3>
+        <select id="chart1-type" onchange="updateChart(1)">
+          <option value="histogram">Histogram</option>
+          <option value="boxplot">Box Plot</option>
+          <option value="violin">Violin Plot</option>
+        </select>
+      </div>
+      <svg></svg>
+    </div>
+    <div class="chart" id="chart2">
+      <div class="chart-controls">
+        <h3>Average Horsepower by Cylinders</h3>
+        <select id="chart2-type" onchange="updateChart(2)">
+          <option value="bar">Bar Chart</option>
+          <option value="line">Line Chart</option>
+          <option value="pie">Pie Chart</option>
+        </select>
+      </div>
+      <svg></svg>
+    </div>
+    <div class="chart" id="chart3">
+      <div class="chart-controls">
+        <h3>Displacement vs Horsepower</h3>
+        <select id="chart3-type" onchange="updateChart(3)">
+          <option value="scatter">Scatter Plot</option>
+          <option value="hexbin">Hexbin Plot</option>
+          <option value="contour">Contour Plot</option>
+        </select>
+      </div>
+      <svg></svg>
+    </div>
+    <div class="chart" id="chart4">
+      <div class="chart-controls">
+        <h3>Acceleration by Model Year of the car</h3>
+        <select id="chart4-type" onchange="updateChart(4)">
+          <option value="grouped-bar">Grouped Bar</option>
+          <option value="stacked-bar">Stacked Bar</option>
+          <option value="area">Area Chart</option>
+        </select>
+      </div>
+      <script src="code.js"></script>
+      <svg></svg>
+    </div>
   </div>
-  <script src="code.js"></script>
-</body>
-</html>
+  <script>
